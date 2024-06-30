@@ -1,0 +1,216 @@
+/* ajustes padrão */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+:root {
+    font-size: 62.5%;
+
+    --header-footer-bc: #2C3639;
+    --input-tags-bc: #494646;
+
+    --main-bc: #201f1f;
+    --items-bc: #353434;
+
+    --font-color: #fff;
+}
+
+
+#app {
+    display: grid;
+    grid-template-rows: max-content 1fr max-content;
+    height: 100vh;
+}
+
+.container {
+    padding: 1.6rem 3.2rem;
+    width: min(112rem, 100%);
+    margin: 0 auto;
+}
+
+input, html, body {
+    font-family: 'Mulish', sans-serif;
+}
+
+
+/* ajustes no header */
+
+header {
+    position: relative;
+
+    --startY: -100%;
+    animation: move .2s;
+}
+
+header, nav, nav ul {
+    display: flex;
+    align-items: center;
+    gap: 7.4rem;
+    font-weight: 700;
+}
+
+header form {
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    font-size: 1.8rem;
+    color: var(--font-color);
+}
+
+ul li.galeria {
+    color: #98bfc0;
+}
+
+body {
+    font-size: 1.6rem;
+    background-color: var(--header-footer-bc);
+    color: var(--font-color);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 1.6rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    opacity: 0.56;
+
+    background-color: var(--input-tags-bc);
+    color: var(--font-color);
+    border: 0;
+    border-radius: .6rem;
+}
+
+.input-wrapper input::placeholder {
+    opacity: 0.56;
+}
+
+.input-wrapper label {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+}
+
+.icon {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    border: 1px solid rgb(166, 166, 166);
+
+    object-fit: cover;
+}
+
+
+/* ajustes no main */
+
+main {
+    background-color: var(--main-bc);
+    overflow-y: scroll;
+}
+
+main h1 {
+    font-size: 2.4rem;
+    padding-top: 1.6rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.2rem;
+    margin-top: 3.2rem;
+}
+
+.item {
+    background-color: var(--items-bc);
+    border-radius: .8rem;
+    overflow: hidden;
+
+    animation: appear .4s var(--delay) backwards;
+    --delay: .4s;
+}
+
+.item img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+
+    display: block;
+
+    filter: grayscale(100%);
+
+    transition-property: all;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+}
+
+.item img:hover {
+    filter: brightness(110%) contrast(110%);
+    transform: scale(1.1) rotate(-1.4deg);
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+.details {
+    padding: 2.2rem;
+    background-color: var(--items-bc);
+    position: relative;
+    z-index: 1;
+}
+
+.tags {
+    margin-top: 1.2rem;
+}
+
+.tags span {
+    padding: .8rem;
+    text-transform: uppercase;
+
+    background-color: var(--input-tags-bc);
+    border-radius: .4rem;
+
+    line-height: 0;
+    font-size: 1.2rem;
+}
+
+
+/* ajustes no footer */
+
+footer p {
+    text-align: center;
+    padding: 1.6rem auto;
+
+    font-weight: 600;
+}
+
+footer {
+    --startY: -100%;
+    animation: move .2s;
+}
+
+@keyframes move {
+    /* 0% {} 25% {} 50% {} 75% {} 100%{}*/
+    from {
+        transform: translateY(var(--startY));
+    }
+
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
